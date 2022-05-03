@@ -31,7 +31,7 @@ function salaryRange(){
     });
 }
 
-/** On form submit populate employee payroll data object */
+/** UC4 On form submit populate employee payroll data object */
 const save = () => {
     try{
         let employeePayrollData = createEmployeePayroll();
@@ -83,4 +83,17 @@ const getInputValueById = (id) => {
 const getInputElementValue=(id)=>{
     let value=document.getElementById(id).value;
     return value;
+}
+
+// UC4 Saving Employee payroll to local storage
+function createAndUpdateStorage(employeePayrollData){
+    let employeePayrollList=JSON.parse(localStorage.getItem("EmployeePayrollList"));
+    if (employeePayrollList!=undefined){
+        employeePayrollList.push(employeePayrollData);
+    }
+    else{
+        employeePayrollList=[EmployeePayrollData]
+    }
+    alert(employeePayrollList.toString());
+    localStorage.setItem("EmployeePayrollList",JSON.stringify(employeePayrollList))
 }
